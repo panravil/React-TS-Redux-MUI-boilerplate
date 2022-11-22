@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { Button } from "@mui/material";
+import { Button, Card } from "@mui/material";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -13,6 +13,8 @@ import {
 import { Provider } from "react-redux";
 import store from "./store";
 import { IRootState } from "./store";
+import { getData } from "./utils/api";
+import { Home } from "./pages/home";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -24,10 +26,31 @@ const router = createBrowserRouter([
     element: <div>This is Home Page</div>,
   },
   {
+    path: "/home",
+    element: (
+      <div>
+        This is Home Page 
+        <Home/>
+      </div>
+    ),
+  },
+  {
     path: "/About",
     element: (
       <div>
-        This is About Page <Button>MUI Button</Button>
+        This is About Page 
+        <div>
+          <Card style={{width:'300px', height:'fit'}}>
+            <div style={{display:'flex', flexDirection:'row'}}>
+              Name
+            </div>
+            <div style={{display:'flex', flexDirection:'row'}}>Attack:</div>
+            <div style={{display:'flex', flexDirection:'row'}}>Defense:</div>
+            <div style={{display:'flex', flexDirection:'row'}}>Health:</div>
+            <div style={{display:'flex', flexDirection:'row'}}>Type:</div>
+          </Card>
+        </div>
+        <Button>MUI Button</Button>
       </div>
     ),
   },
